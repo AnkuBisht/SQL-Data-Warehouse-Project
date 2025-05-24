@@ -75,3 +75,57 @@ Purpose: Deliver performant and clean datasets that power business intelligence.
 
 ## Folder Structure (Example)
 
+/bronze
+  - bronze_tables.sql
+  - bronze_load_procedures.sql
+/silver
+  - silver_tables.sql
+  - silver_load_procedures.sql
+/gold
+  - gold_tables.sql
+  - gold_transformations.sql
+README.md
+
+
+
+---
+
+## Contributing
+
+Contributions are welcome! Please follow coding standards, write clear commit messages, and document any new scripts or changes.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+
+---
+
+## About Me
+
+Hello! I am a fresher eager to build a career in data analytics and data engineering.  
+I am passionate about working with data, learning new tools, and developing skills to solve real-world problems through data.  
+
+- Currently enhancing my skills in SQL, data modeling, and ETL processes.  
+- Motivated to contribute to meaningful data projects and grow in the field.  
+- Open to internships and entry-level opportunities to gain hands-on experience.  
+
+---
+
+## About Me
+
+Hello! I am a fresher eager to build a career in data analytics and data engineering.  
+I am passionate about working with data, learning new tools, and developing skills to solve real-world problems through data.  
+
+- Currently enhancing my skills in SQL, data modeling, and ETL processes.  
+- Motivated to contribute to meaningful data projects and grow in the field.  
+- Open to internships and entry-level opportunities to gain hands-on experience.  
+
+Feel free to connect with me on:  
+[LinkedIn](https://www.linkedin.com/in/ankit-singh-bisht-352332223/) | [GitHub](https://github.com/AnkuBisht)
+
+
