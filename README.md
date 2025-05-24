@@ -1,74 +1,77 @@
-# 🏗️ Data Warehouse Project
+# Data Warehouse Project
 
-Welcome to the **Data Warehouse Project**, a structured ETL data pipeline built using **PostgreSQL**. This project models a modern data warehousing architecture using the **Bronze–Silver–Gold** layer pattern.
-
-## 📦 Project Structure
-
-The project is organized into three main data layers:
-
-- **Bronze Layer**: Raw ingestion layer containing untransformed source data.
-- **Silver Layer**: Cleaned, enriched, and deduplicated data ready for analysis.
-- **Gold Layer** *(Future Scope)*: Business-ready aggregated data for reporting and dashboards.
-
-## 📁 Folder Contents
-
-| File                         | Description                                         |
-|-----------------------------|-----------------------------------------------------|
-| `ddl_bronze.sql`            | DDL scripts to create raw (bronze) layer tables     |
-| `ddl_silver.sql`            | DDL scripts for cleansed (silver) layer tables      |
-| `load_silver_procedure.sql` | Stored procedure to transform and load silver data  |
+This project implements a robust, scalable data warehouse architecture using a **Bronze-Silver-Gold** layered approach to process and transform raw data into clean, business-ready datasets for analytics and reporting.
 
 ---
 
-## 🗃️ Database: `data_warehouse_project`
+## Project Overview
 
-### 🥉 Bronze Layer
+The project organizes the data pipeline into three layers, each designed for specific data management and transformation purposes:
 
-Tables that hold raw data ingested from various operational sources. These are:
+### Bronze Layer — Raw Data Ingestion
 
-- `bronze.crm_cust_info`
-- `bronze.crm_prd_info`
-- `bronze.crm_sales_details`
-- `bronze.erp_loc_a101`
-- `bronze.erp_cust_az12`
-- `bronze.erp_px_cat_g1v2`
+- Stores raw, unprocessed data from source systems (CRM, ERP, sales).
+- Data is ingested as-is with minimal transformation to preserve original details.
+- Tables include:
+  - `bronze.crm_cust_info` — Raw customer details.
+  - `bronze.crm_prd_info` — Raw product information.
+  - `bronze.crm_sales_details` — Raw sales transactions.
+  - ERP-related tables with location and category info.
 
-### 🥈 Silver Layer
-
-Cleaned and normalized versions of the bronze tables:
-
-- `silver.crm_cust_info`
-- `silver.crm_prd_info`
-- `silver.crm_sales_details`
-- `silver.erp_loc_a101`
-- `silver.erp_cust_az12`
-- `silver.erp_px_cat_g1v2`
-
-These tables include:
-- Standardized values (e.g., gender, country)
-- Cleaned/trimmed strings
-- Default values and derived fields
-- Metadata columns like `dwh_create_date`
+Purpose: Serve as the single source of truth for all raw input data and maintain full auditability.
 
 ---
 
-## 🔁 ETL Procedure
+### Silver Layer — Data Cleansing & Standardization
 
-The ETL process is encapsulated in a PostgreSQL **stored procedure**:
+- Cleanses and standardizes Bronze data to improve quality and consistency.
+- Applies transformations like trimming text, standardizing categorical values (e.g., gender, marital status), date formatting, and deduplication.
+- Adds metadata such as load timestamps.
+- Tables include cleansed versions of customer, product, sales, and ERP datasets.
 
-```sql
-\i ddl_bronze.sql
-\i ddl_silver.sql
-\i load_silver_procedure.sql
+Purpose: Provide a reliable, intermediate curated dataset ready for further enrichment.
 
-CALL silver.load_silver();
+---
 
+### Gold Layer — Business-Ready Data Model
 
+- Constructs analytical models optimized for business users and reporting.
+- Creates dimension tables (`dim_customer`, `dim_products`) with surrogate keys and business keys.
+- Builds fact tables to capture transactions and metrics.
+- Supports analytics, dashboarding, and decision-making processes.
 
-Credits
-Built by [Ankit Singh Bisht] as part of a hands-on data warehousing learning journey.
+Purpose: Deliver performant and clean datasets that power business intelligence.
 
+---
 
- License
-This project is open-source and available under the MIT License.
+## Data Pipeline Summary
+
+| Layer  | Description                        | Key Operations                             | Example Tables             |
+|--------|----------------------------------|--------------------------------------------|---------------------------|
+| Bronze | Raw data ingestion                | Load raw source data                        | `bronze.crm_cust_info`    |
+| Silver | Cleansing and standardization    | Trim, format, deduplicate, standardize     | `silver.crm_cust_info`    |
+| Gold   | Analytical data modeling         | Build dimensions, facts, surrogate keys    | `gold.dim_customer`       |
+
+---
+
+## Usage
+
+- Run the SQL scripts sequentially from Bronze → Silver → Gold.
+- Use provided stored procedures to load and transform data efficiently.
+- Query Gold layer tables for reporting and analysis.
+
+---
+
+## Skills Utilized
+
+- **SQL & PL/pgSQL**: Writing ETL procedures, complex queries, and transformations.
+- **Data Warehousing**: Multi-layer architecture design and implementation.
+- **Data Cleansing**: Handling nulls, standardizing fields, and data quality improvements.
+- **Data Modeling**: Designing dimension and fact tables with surrogate keys.
+- **Database Management**: Working with PostgreSQL schemas and procedures.
+- **Version Control**: Managing scripts and collaboration via Git/GitHub.
+
+---
+
+## Folder Structure (Example)
 
