@@ -57,6 +57,10 @@ These tables include:
 The ETL process is encapsulated in a PostgreSQL **stored procedure**:
 
 ```sql
+\i ddl_bronze.sql
+\i ddl_silver.sql
+\i load_silver_procedure.sql
+
 CALL silver.load_silver();
 
 
