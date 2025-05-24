@@ -1,3 +1,10 @@
+DATA DICTIONARY:Gold Layer
+
+OVERVIEW
+This table represents a curated Customer Dimension in the Gold Layer of the data_warehouse project, created by consolidating and transforming data from multiple Silver Layer sources.
+
+
+
 ## 📘 Data Model 1: `gold.dim_customer`
 
 | Column Name       | Data Type   | Description                                                                 |
