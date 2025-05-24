@@ -1,8 +1,34 @@
-This repository contains the Data Definition Language (DDL) script for creating raw staging tables in the Bronze layer of a modern data warehouse.
+-- =====================================================================
+-- File: ddl_bronze.sql
+-- Description: Contains all table creation statements for the 'bronze' schema
+--              in a multi-layered data warehouse architecture.
+--
+-- Layer: Bronze (Raw/Staging Layer)
+--
+-- Purpose:
+--   - Stores raw ingested data with minimal transformation
+--   - Acts as the base layer for building Silver and Gold layer datasets
+--   - Enables reproducibility, traceability, and rollback
+--
+-- Tables Included:
+--   - bronze.crm_cust_info         -- Raw customer data
+--   - bronze.crm_prd_info          -- Product master information
+--   - bronze.crm_sales_details     -- Sales transaction records
+--   - bronze.erp_loc_a101          -- Customer location data
+--   - bronze.erp_cust_az12         -- ERP customer attributes
+--   - bronze.erp_px_cat_g1v2       -- ERP product catalog and maintenance info
+--
+-- How to Execute:
+--   Ensure the 'bronze' schema exists:
+--     CREATE SCHEMA IF NOT EXISTS bronze;
+--
+--   Then run:
+--     \i ddl/ddl_bronze.sql
+--
+-- Author: [Ankit Singh Bisht]
+--
+-- =====================================================================
 
-The file ddl_bronze.sql includes SQL statements to create all the necessary tables that ingest data from source systems with minimal to no transformation.
-These tables serve as the foundation for building refined datasets in the Silver and Gold layers of the data pipeline.
------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 create table bronze.crm_cust_info(
